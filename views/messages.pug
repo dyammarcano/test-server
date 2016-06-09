@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+  head
+    title= 'Feathers Messages'
+  body
+    a(href='/') Home
+    h1 Message List
+    p This message list was rendered using a Jade template but pulling from the 
+      a(href='/messages') Message
+      |  Service.
+    ul
+      each message in messages
+        li= message.text

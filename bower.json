@@ -1,0 +1,34 @@
+{
+    "name": "application",
+    "description": "express, coffee, stylus, pug, mongodb",
+    "main": "app.coffee",
+    "authors": [
+        "Dyam Marcano"
+    ],
+    "license": "MIT",
+    "keywords": [
+        "express",
+        "coffee",
+        "stylus",
+        "pug",
+        "mongodb",
+        "morgan"
+    ],
+    "homepage": "",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "Materialize": "materialize#^0.97.6",
+        "moment": "^2.13.0",
+        "modernizr-min": "^3.2.0",
+        "angular": "^1.5.6",
+        "jquery-validation": "^1.15.0",
+        "bootstrap": "^3.3.6",
+        "bootstrap-material-design": "^0.5.10"
+    }
+}

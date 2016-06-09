@@ -1,0 +1,26 @@
+extends ../layouts/layout
+
+block styles
+    link(rel="stylesheet", href="/stylesheets/login.css")
+
+block content
+    if message
+        span= message
+        
+    form.login-form.z-depth-3(role='form', action='/api/auth', method='post')
+        .thumbnail
+            img(src='favicon.png')
+        .form-group.log-status.input-field.col.s6
+            input#user_name.form-control.validate(type='text', name='username', required='')
+            label(for='user_name') Username:
+            span.tooltipped.col.s4.offset-s4.l2.offset-l1.red(data-position='right', data-delay='50', data-tooltip='Input Required:')
+
+        .form-group.log-status.input-field.col.s6
+            input#user_name.form-control.validate(type='password', name='password', required='')
+            label(for='user_pass') Password:
+            span.tooltipped.col.s4.offset-s4.l2.offset-l1.red(data-position='right', data-delay='50', data-tooltip='Input Required:')
+
+        button.log-btn(type='submit') Enter
+
+    block scripts
+        script(src="/javascripts/login.js")
