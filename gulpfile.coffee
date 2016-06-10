@@ -1,8 +1,13 @@
-gulp           = require 'gulp'
-coffee         = require 'gulp-coffee'
-stylus         = require 'gulp-stylus'
-indent         = require 'gulp-indent'
-livereload     = require 'gulp-livereload'
+'use strict'
+
+gulp           = require('gulp')
+coffee         = require('gulp-coffee')
+stylus         = require('gulp-stylus')
+indent         = require('gulp-indent')
+livereload     = require('gulp-livereload')
+
+# fix ENOSPC error on ubuntu
+# echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
 gulp.task 'coffee', ->
 	gulp.src('resources/coffee/*.coffee')

@@ -9,7 +9,7 @@ Router.use require './login'
 ##############################################################################################
 
 Router.get '/', (request, response) ->
-    console.log 'Cookies: ', request.cookies
+    #console.log 'Cookies: ', request.cookies
     params = 
         title: 'render title'
 

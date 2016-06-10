@@ -1,4 +1,13 @@
-$(document).ready(function() {
-  Materialize.updateTextFields();
-  $('select').material_select();
+var socket;
+
+socket = io.connect('http://localhost:9000');
+
+$('#form').on('submit', function(event) {
+  event.preventDefault();
+  console.log('user_name: ' + $('#user_name').val() + ' user_pass: ' + $('#user_pass').val() + ' remember: ' + $('#remember').val());
+  socket.emit('verify', {
+    username: $('#user_name').val(),
+    password: $('#user_pass').val(),
+    remember: $('#remember').val()
+  });
 });

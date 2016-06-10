@@ -18,8 +18,6 @@ Errorhandler   = require('errorhandler')
 MongoDBStore   = require('connect-mongodb-session')(Session)
 Morgan         = require('morgan')
 ResponseTime   = require('response-time')
-#middleware     = require('./middleware')
-#services       = require('./services')
 Routes         = require('./routes')
 
 
@@ -59,8 +57,10 @@ onListening = ->
 
 app = Express()
 
-app.use Morgan 'combined'
+#app.use Morgan 'combined'
+
 app.use ResponseTime()
+
 app.set 'trust proxy', 1
 
 app.use Session (
@@ -83,11 +83,6 @@ app.use BodyParser.urlencoded extended: true
 app.use Express.static Path.join __dirname, 'public_html'
 app.disable 'x-powered-by'
 
-###Mongoose.connect Config.db_name, (error) ->
-    if error
-        console.log error###
-    
-
 app.use '/', Routes
 
 port = process.env.PORT
@@ -98,7 +93,23 @@ app.set 'port', port
 # Create HTTP server.
 ##############################################################################################
 
-server = Http.createServer(app).listen app.get 'port'
+server = Http.createServer(app)
+
+server.listen app.get 'port'
+
+io = require('socket.io')(server)
+
+io.on 'connection', (socket) ->
+    console.log 'Client connected...'
+
+    socket.on 'join', (data) ->
+        console.log 'join data: ' + data
+
+    socket.on 'messages', (data) ->    
+        socket.emit 'messages', 'Hello from server: ' + data
+
+    socket.on 'verify', (data) ->
+        console.log data
 
 ##############################################################################################
 # Listen on provided port, on all network interfaces.
