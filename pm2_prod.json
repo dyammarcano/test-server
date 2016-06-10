@@ -1,9 +1,9 @@
 {
     "apps": [{
-        "name"            : "webApp",
-        ".coffee"         : "coffee",
-        "script"          : "./app.coffee",
-        "instances"       : "1",
-        "exec_mode"       : "cluster"
+        "name"        : "webApp",
+        ".coffee"     : "coffee",
+        "script"      : "./app.coffee",
+        "instances"   : "1",
+        "exec_mode"   : "cluster"
     }]
 }

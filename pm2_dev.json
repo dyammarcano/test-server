@@ -1,11 +1,11 @@
 {
     "apps": [{
-        "name"            : "webApp",
-        ".coffee"         : "coffee",
-        "script"          : "./app.coffee",
-        "instances"       : "1",
-        "exec_mode"       : "cluster",
-        "ignoreWatch"     : ["node_modules", ".git"],
-        "watch"           : true
+        "name"        : "webApp",
+        ".coffee"     : "coffee",
+        "script"      : "./app.coffee",
+        "instances"   : "1",
+        "exec_mode"   : "cluster",
+        "ignoreWatch" : ["node_modules", ".git"],
+        "watch"       : true
     }]
 }
