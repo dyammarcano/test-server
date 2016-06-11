@@ -10,9 +10,15 @@ livereload     = require('gulp-livereload')
 # echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
 gulp.task 'coffee', ->
-	gulp.src('resources/coffee/*.coffee')
+    gulp.src('resources/coffee/*.coffee')
     .pipe coffee bare: true, indent tabs: false, amount: 4
-	.pipe gulp.dest('public_html/javascripts/')
+    .pipe gulp.dest('public_html/javascripts/')
+    .pipe livereload()
+
+gulp.task 'libs', ->
+    gulp.src('resources/coffee/libs/*.coffee')
+    .pipe coffee bare: true, indent tabs: false, amount: 4
+    .pipe gulp.dest('public_html/libs/')
     .pipe livereload()
 
 gulp.task 'stylus', ->
@@ -24,9 +30,11 @@ gulp.task 'stylus', ->
 gulp.task 'watch', ->
     livereload.listen()
     gulp.watch 'resources/coffee/*.coffee', ['coffee']
+    gulp.watch 'resources/coffee/libs/*.coffee', ['libs']
     gulp.watch 'resources/stylus/*.styl', ['stylus']
 
 gulp.task 'default', [
     'coffee'
     'stylus'
+    'libs'
 ]

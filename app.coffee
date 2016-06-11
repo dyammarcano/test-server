@@ -19,7 +19,9 @@ MongoDBStore   = require('connect-mongodb-session')(Session)
 Morgan         = require('morgan')
 ResponseTime   = require('response-time')
 Routes         = require('./routes')
+Moment         = require('moment')()
 
+TokenString    = require('./helpers/token')
 
 ##############################################################################################
 # Event listener for HTTP server "error" event.
@@ -100,7 +102,18 @@ server.listen app.get 'port'
 io = require('socket.io')(server)
 
 io.on 'connection', (socket) ->
-    console.log 'Client connected...'
+    #socketId = socket.id
+    #clientIp = socket.request.connection.remoteAddress
+    #address = socket.handshaken[socket.id].address
+
+    console.log Moment.format('LLLL') + ' Client connected... '# + socketId + ' ' + clientIp
+    #console.log 'New connection from ' + address.address + ':' + address.port
+    
+    #sHeaders = socket.handshake.headers
+    #console.info '[%s:%s] CONNECT', sHeaders['x-forwarded-for'], sHeaders['x-forwarded-port']
+
+    socket.on 'online', (data) ->
+        socket.emit 'online', true
 
     socket.on 'join', (data) ->
         console.log 'join data: ' + data
@@ -110,6 +123,11 @@ io.on 'connection', (socket) ->
 
     socket.on 'verify', (data) ->
         console.log data
+
+        setTimeout (->
+            socket.emit 'verify', TokenString
+            return
+        ), 2000
 
 ##############################################################################################
 # Listen on provided port, on all network interfaces.

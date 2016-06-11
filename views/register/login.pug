@@ -29,12 +29,11 @@ block content
             label(for='remember') Remember
         p
 
+        button.log-btn(type='submit') Enter
 
-        button.log-btn(type='submit', name='submit') Enter
         p.link
             | Not registered? 
             a(href='/register') Register
             
-
 block scripts
-    script(src="/javascripts/login.js")
+    script(data-main="/libs/login" src="module/requirejs/require.js")
