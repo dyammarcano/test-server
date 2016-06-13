@@ -1,6 +1,6 @@
 $(document).ready ->
-    setTimeout (->
-        $('body').addClass 'loaded'
-        return
-    ), 1000
+  setTimeout (->
+    $('body').addClass 'loaded'
     return
+  ), 1000
+  return

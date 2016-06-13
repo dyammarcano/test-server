@@ -5,9 +5,9 @@
   "description": "express, coffee, stylus, pug, mongodb",
   "main": "app.coffee",
   "scripts": {
-    "debug": "DEBUG=myapp:* coffee app.coffee",
-    "start": "coffee app.coffee",
-    "monit": "nodemon app.coffee",
+    "debug": "DEBUG=myapp:* coffee server.coffee",
+    "start": "coffee server.coffee",
+    "monit": "nodemon server.coffee",
     "postinstall": "bower install"
   },
   "keywords": [
@@ -42,13 +42,6 @@
     "express": "^4.13.4",
     "express-error-handler": "^1.1.0",
     "express-session": "^1.13.0",
-    "feathers": "^2.0.1",
-    "feathers-authentication": "^0.7.7",
-    "feathers-configuration": "^0.2.3",
-    "feathers-errors": "^2.2.0",
-    "feathers-hooks": "^1.5.4",
-    "feathers-mongoose": "^3.3.7",
-    "grunt": "^1.0.1",
     "moment": "^2.13.0",
     "mongoose": "^4.4.20",
     "mongoose-bcrypt": "^1.4.2",
@@ -57,20 +50,18 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
-    "passport-remember-me": "0.0.1",
-    "passport-remember-me-extended": "0.0.2",
+    "primus": "^5.2.1",
+    "primus-express-session": "0.0.2",
+    "primus.io": "^3.2.0",
     "pug": "^2.0.0-beta2",
     "response-time": "^2.3.1",
     "serve-favicon": "^2.3.0",
     "socket.io": "^1.4.6",
-    "winston": "^2.2.0"
+    "winston": "^2.2.0",
+    "ws": "^1.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.9.0",
-    "babel-core": "^6.9.1",
-    "babel-preset-es2015": "^6.9.0",
     "bower": "^1.7.9",
-    "browserify": "^13.0.1",
     "chai": "^3.5.0",
     "coffee-script": "^1.10.0",
     "gulp": "^3.9.1",
@@ -81,11 +72,7 @@
     "gulp-stylus": "^2.4.0",
     "jshint": "^2.9.2",
     "mocha": "^2.5.3",
-    "nodemon": "^1.9.2",
-    "request": "^2.72.0",
-    "require-cs": "^0.5.4",
     "requirejs": "^2.2.0",
-    "should": "^9.0.0",
-    "webpack": "^1.13.1"
+    "should": "^9.0.0"
   }
 }

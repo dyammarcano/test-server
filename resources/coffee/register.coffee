@@ -1,4 +1,4 @@
 $(document).ready ->
-    Materialize.updateTextFields()
-    $('select').material_select()
-    return
+  Materialize.updateTextFields()
+  $('select').material_select()
+  return

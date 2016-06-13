@@ -1,0 +1,10 @@
+{
+  "apps": [{
+    "name"      : "gulpWatch",
+    ".coffee"   : "coffee",
+    "script"    : "./gulpfile.coffee",
+    "args"      : "watch",
+    "instances" : "1",
+    "exec_mode" : "cluster"
+  }]
+}

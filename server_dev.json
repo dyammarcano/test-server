@@ -1,0 +1,11 @@
+{
+  "apps": [{
+    "name"        : "webApp",
+    ".coffee"     : "coffee",
+    "script"      : "./server.coffee",
+    "instances"   : "1",
+    "exec_mode"   : "cluster",
+    "ignoreWatch" : ["node_modules", ".git", "views", "public_html", "resources"],
+    "watch"       : true
+  }]
+}

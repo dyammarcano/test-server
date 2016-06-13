@@ -1,39 +1,79 @@
 extends ../layouts/layout
 
 block styles
-    link(rel="stylesheet", href="/stylesheets/login.css")
+  link(rel="stylesheet", href="/stylesheets/login.css")
 
 block content
-    if message
-        span= message
-        
-    form.login-form.z-depth-3(role='form', id='form', action='/api/auth', method='post')
-        .thumbnail
-            img(src='favicon.png')
-        .form-group.log-status.input-field.col.s6
-            input#user_name.form-control.validate(type='text', name='username', required='')
-            label(for='user_name') Username:
-            span.tooltipped.col.s4.offset-s4.l2.offset-l1.red(data-position='right', data-delay='50', data-tooltip='Input Required:')
+  form(name="frm")
+    div
+      label(for="user_name") Username:
+      span(style="color:red" ng-show="frm.username.$dirty && frm.username.$invalid")
+      input#user_name(type="email" name="username" ng-model="Username" required)
+      span(ng-show="frm.username.$error.required") Required!
 
-        .form-group.log-status.input-field.col.s6
-            input#user_pass.form-control.validate(type='password', name='password', required='')
-            label(for='user_pass') Password:
-            span.tooltipped.col.s4.offset-s4.l2.offset-l1.red(data-position='right', data-delay='50', data-tooltip='Input Required:')
+    div
+      label(for="user_pass") Password:
+      span(style="color:red" ng-show="frm.password.$dirty && frm.password.$invalid")
+      input#user_pass(type="password" name="password" ng-model="Password" required)
+      span.error(ng-show="frm.password.$error.required") Required!
 
-        span.alert Invalid Credentials
-        
-        a.link(href='/manager') Lost your password?
+    a(href="/manager") Lost your password?
 
-        p
-            input#remember(type='checkbox', name="remember" value="yes")
-            label(for='remember') Remember
-        p
+    p
+      input#remember(type="checkbox" name="remember" ng-model="remember")
+      label(for="remember") Remember
+    p
 
-        button.log-btn(type='submit') Enter
+    button(type="submit" ng-disabled="frm.user.$dirty && frm.username.$invalid or frm.password.$dirty && frm.username.$invalid") Enter
 
-        p.link
-            | Not registered? 
-            a(href='/register') Register
-            
+    p
+      | Not registered? 
+      a(href="/register") Register
+
 block scripts
-    script(data-main="/libs/login" src="module/requirejs/require.js")
+  //-script(src="libs/conection.js")
+  script(src="javascripts/login.js")
+
+
+
+//- extends ../layouts/layout
+
+//- block styles
+//-   link(rel="stylesheet", href="/stylesheets/login.css")
+
+//- block content
+//-   body(ng-app)
+//-     if message
+//-       span= message
+      
+//-     form.login-form.z-depth-3(name="frm", id="form")
+//-       div.thumbnail
+//-         img(src="favicon.png")
+//-       div.form-group.log-status.input-field.col.s6
+//-         input#user_name.form-control.validate(type="email", name="username", ng-model="user.email", required)
+//-         label(for="user_name") Username:
+//-         span(ng-show="frm.email.$invalid") Required:
+
+//-       div.form-group.log-status.input-field.col.s6
+//-         input#user_pass.form-control.validate(type="password", name="password", required="")
+//-         label(for="user_pass") Password:
+//-         span.tooltipped.col.s4.offset-s4.l2.offset-l1.red(data-position="right", data-delay="50", data-tooltip="Input Required:")
+
+//-       span.alert Invalid Credentials
+      
+//-       a.link(href="/manager") Lost your password?
+
+//-       p
+//-         input#remember(type="checkbox", name="remember", value="yes", checked)
+//-         label(for="remember") Remember
+//-       p
+
+//-       button.log-btn(type="submit") Enter
+
+//-       p.link
+//-         | Not registered? 
+//-         a(href="/register") Register
+      
+//- block scripts
+//-   //-script(data-main="/libs/login" src="module/requirejs/require.js")
+//-   script(src="libs/conection.js")

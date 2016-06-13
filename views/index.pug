@@ -1,9 +1,51 @@
 extends layouts/layout
 
 block content
-    .container
-        h1 #{title}
-        p This page was rendered using the Jade template engine
-        a(href='/message-list') View Messages
-        br
-        a(href='/login') Login
+  div.container
+    h1 #{title}
+    p This page was rendered using the Pug template engine
+
+    a(href='/login') Login
+
+    //-include:markdown markdown/example.md
+
+    //- Declaration
+    mixin list
+      ul
+        li foo
+        li bar
+        li baz
+    //- Use
+    +list
+    +list
+
+    mixin pet(name)
+      li.pet= name
+    ul
+      +pet('cat')
+      +pet('dog')
+      +pet('pig')
+      mixin article(title)
+        .article
+          .article-wrapper
+            h1= title
+            if block
+              block
+            else
+              p No content provided
+
+      ul
+        each val in [1, 2, 3, 4, 5]
+          li= val
+
+      - var n = 0
+        ul
+          while n < 4
+            li= n++
+
+      +article('Hello world')
+        p This is my
+        p Amazing article
+
+block scripts
+  script(src="libs/conection.js")
