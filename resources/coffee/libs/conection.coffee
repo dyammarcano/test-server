@@ -1,3 +1,5 @@
+'use strict'
+
 socket = Primus.connect('http://' + location.hostname + ':8000')
 
 status = false

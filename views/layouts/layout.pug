@@ -1,6 +1,6 @@
 doctype html
 html
-  html(lang="en")
+  html(lang="en" ng-app="webApp")
     meta(charset="utf-8")
     meta(http-equiv="x-ua-compatible" content="ie=edge")
     title= title
@@ -13,17 +13,17 @@ html
     //-if (!user)
       link(rel="stylesheet", href="/stylesheets/preloader.css")
 
-  block styles
+    block styles
 
-  body(ng-app)
-    div#content.container
-      if (user)
+  body
+    div#content
+      if (!user)
         div#loader-wrapper
           div#loader
           div.loader-section.section-left
           div.loader-section.section-right
 
-    block content
+      block content
 
     script(src="/module/angular/angular.min.js")
     //-script(src="/module/Materialize/dist/js/materialize.min.js")

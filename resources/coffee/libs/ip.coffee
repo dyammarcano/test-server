@@ -1,3 +1,5 @@
+'use strict'
+
 getIPs = (callback) ->
   ip_dups = {}
   #compatibility for firefox and chrome

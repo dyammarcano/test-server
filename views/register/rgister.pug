@@ -1,0 +1,34 @@
+extends ../layouts/layout
+
+block styles
+  link(rel="stylesheet", href="/stylesheets/register.css")
+
+block content
+  form(name="frm")
+    div
+      label(for="user_name") Username:
+      span(style="color:red" ng-show="frm.username.$dirty && frm.username.$invalid")
+      input#user_name(type="email" name="username" ng-model="Username" required)
+      span(ng-show="frm.username.$error.required") Required!
+
+    div
+      label(for="user_pass") Password:
+      span(style="color:red" ng-show="frm.password.$dirty && frm.password.$invalid")
+      input#user_pass(type="password" name="password" ng-model="Password" required)
+      span.error(ng-show="frm.password.$error.required") Required!
+
+    a(href="/manager") Lost your password?
+
+    p
+      input#remember(type="checkbox" name="remember" ng-model="remember")
+      label(for="remember") Remember
+    p
+
+    button(type="submit" ng-disabled="frm.user.$dirty && frm.username.$invalid or frm.password.$dirty && frm.username.$invalid") Enter
+
+    p
+      | Not registered? 
+      a(href="/register") Register
+
+block scripts
+  script(src="javascripts/register.js")

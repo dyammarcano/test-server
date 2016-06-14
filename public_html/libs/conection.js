@@ -1,3 +1,4 @@
+'use strict';
 var socket, status;
 
 socket = Primus.connect('http://' + location.hostname + ':8000');

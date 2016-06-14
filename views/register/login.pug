@@ -1,34 +1,36 @@
 extends ../layouts/layout
 
-block styles
+//-block styles
   link(rel="stylesheet", href="/stylesheets/login.css")
 
 block content
-  form(name="frm")
-    div
-      label(for="user_name") Username:
-      span(style="color:red" ng-show="frm.username.$dirty && frm.username.$invalid")
-      input#user_name(type="email" name="username" ng-model="Username" required)
-      span(ng-show="frm.username.$error.required") Required!
+  div.container
+    form(ng-controller="myForm" ng-submit="submitFrom()")
+      div.form-group
+        div.input-group
+          label(for="user_name") Username:
+          //-span(style="color:red" ng-show="frm.username.$dirty && frm.username.$invalid")
+          input#user_name.form-control(type="email" name="username" ng-model="user.username" required="")
+          //-span(ng-show="frm.username.$error.required") Required!
 
-    div
-      label(for="user_pass") Password:
-      span(style="color:red" ng-show="frm.password.$dirty && frm.password.$invalid")
-      input#user_pass(type="password" name="password" ng-model="Password" required)
-      span.error(ng-show="frm.password.$error.required") Required!
+        div.input-group
+          label(for="user_pass") Password:
+          //-span(style="color:red" ng-show="frm.password.$dirty && frm.password.$invalid")
+          input#user_pass.form-control(type="password" name="password" ng-model="user.password" required="")
+          //-span(ng-show="frm.password.$error.required") Required!
 
-    a(href="/manager") Lost your password?
+        a(href="/manager") Lost your password?
 
-    p
-      input#remember(type="checkbox" name="remember" ng-model="remember")
-      label(for="remember") Remember
-    p
+        p
+          input#remember(type="checkbox" name="remember" ng-model="user.remember")
+          label(for="remember") Remember
+        p
 
-    button(type="submit" ng-disabled="frm.user.$dirty && frm.username.$invalid or frm.password.$dirty && frm.username.$invalid") Enter
+        button(type="submit" ng-click="registerUser()") Enter
 
-    p
-      | Not registered? 
-      a(href="/register") Register
+        p
+          | Not registered? 
+          a(href="/register") Register
 
 block scripts
   //-script(src="libs/conection.js")

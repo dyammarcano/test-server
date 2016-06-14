@@ -1,3 +1,5 @@
+'use strict'
+
 $(document).ready ->
   Materialize.updateTextFields()
   $('select').material_select()

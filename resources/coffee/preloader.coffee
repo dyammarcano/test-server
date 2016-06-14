@@ -1,3 +1,5 @@
+'use strict'
+
 $(document).ready ->
   setTimeout (->
     $('body').addClass 'loaded'

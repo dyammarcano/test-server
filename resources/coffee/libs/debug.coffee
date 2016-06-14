@@ -1,3 +1,5 @@
+'use strict'
+
 if typeof Storage != undefined
   if localStorage['debug'] == undefined
     localStorage['debug'] = ' : ' + Date.now() + '\n'

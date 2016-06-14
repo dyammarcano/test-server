@@ -1,3 +1,5 @@
+'use strict'
+
 createCookie = (name, value, days) ->
   `var expires`
   if days
